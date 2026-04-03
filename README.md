@@ -23,7 +23,7 @@ Praktikum pertama difokuskan pada pengenalan dasar *framework* CodeIgniter 4 dan
 * **View & Layout Dasar:** Membuat file View untuk menampilkan halaman web dan menggabungkannya dengan aset CSS statis (`style.css`) yang diletakkan pada folder `public`.
 
 > **Hasil Praktikum 1:**
-![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/6a2b4dd4b8d7933b42e353a7b23edb0700773b64/Web2%20Praktikum%201-4%20SS/Screenshot%202026-04-03%20152137.png)
+> ![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/6a2b4dd4b8d7933b42e353a7b23edb0700773b64/Web2%20Praktikum%201-4%20SS/Screenshot%202026-04-03%20152137.png)
 
 ---
 
@@ -38,7 +38,8 @@ Praktikum kedua melanjutkan pengembangan dengan membangun fitur CRUD (*Create, R
 * **Menu Admin (Backend):** Membuat rute khusus admin untuk melakukan proses CRUD, yang meliputi penambahan data (Add), pengubahan data (Edit), dan penghapusan data (Delete).
 
 > **Hasil Praktikum 2:**
-> *[Tambahkan Screenshot halaman Admin Portal Berita & Form Tambah Artikel di sini]*
+> ![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/4892197e5a4502419fc0157cd43ab2f66e0d37d8/Web2%20Praktikum%201-4%20SS/Screenshot%202026-04-03%20160058.png)
+> ![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/4892197e5a4502419fc0157cd43ab2f66e0d37d8/Web2%20Praktikum%201-4%20SS/Screenshot%202026-04-03%20155434.png)
 
 ---
 
