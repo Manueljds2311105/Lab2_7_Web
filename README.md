@@ -23,7 +23,7 @@ Praktikum pertama difokuskan pada pengenalan dasar *framework* CodeIgniter 4 dan
 * **View & Layout Dasar:** Membuat file View untuk menampilkan halaman web dan menggabungkannya dengan aset CSS statis (`style.css`) yang diletakkan pada folder `public`.
 
 > **Hasil Praktikum 1:**
-> *[Tambahkan Screenshot halaman About/Tampilan Layout Statis di sini]*
+![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/6a2b4dd4b8d7933b42e353a7b23edb0700773b64/Web2%20Praktikum%201-4%20SS/Screenshot%202026-04-03%20152137.png)
 
 ---
 
