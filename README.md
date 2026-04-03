@@ -43,14 +43,20 @@ Praktikum kedua melanjutkan pengembangan dengan membangun fitur CRUD (*Create, R
 ---
 
 ## 🎨 Praktikum 3: View Layout dan View Cell
-Praktikum ini merapikan struktur tampilan aplikasi menggunakan konsep **View Layout** dan **View Cell**. Pendekatan ini membuat manajemen tampilan menjadi lebih modular, rapi, dan mudah dikelola.
+Praktikum ini merapikan struktur tampilan aplikasi menggunakan konsep **View Layout** dan **View Cell**. Pendekatan ini membuat manajemen tampilan menjadi lebih modular, rapi, dan efisien. Selain itu, bagian ini juga mencakup penyelesaian tugas akhir modul.
 
-**Langkah-langkah Utama:**
-* **View Layout Utama:** Membuat file `main.php` di dalam folder `layout` sebagai templat dasar halaman. File *view* lainnya (seperti `home.php`) dimodifikasi agar mewarisi tata letak ini menggunakan sintaks `extend` dan mengisi bagian konten dengan `section`.
-* **Implementasi View Cell:** Membuat komponen antarmuka dinamis dan modular (*reusable*) menggunakan View Cell. Kami mengimplementasikan komponen `ArtikelTerkini` untuk menampilkan 5 artikel terbaru pada area *sidebar* (widget) di semua halaman yang memanggilnya.
+**Langkah-langkah Utama & Penyelesaian Tugas:**
+* **View Layout Utama:** Membuat file `main.php` di dalam folder `layout` sebagai templat dasar halaman. File *view* lainnya dimodifikasi agar mewarisi tata letak ini menggunakan sintaks `extend` dan mengisi bagian konten dengan `section`.
+* **Penyesuaian Database (Tugas):** Menambahkan kolom `created_at` (DATETIME) untuk mengurutkan artikel dari yang terbaru, serta menambahkan kolom `kategori` (VARCHAR) pada tabel `artikel` di database MySQL.
+* **Implementasi View Cell Custom:** Membuat komponen widget dinamis `ArtikelTerkini`. *Catatan pengembangan:* Kode disesuaikan dengan standar CodeIgniter 4 terbaru dengan melepaskan *class* dari `extends Cell` untuk menghindari konflik (*Fatal Error*).
+* **Filter Kategori Tertentu (Tugas):** Memodifikasi logika pada fungsi `render()` di View Cell `ArtikelTerkini` untuk mengambil datanya sendiri ke Model. Data difilter menggunakan query builder `where('kategori', 'Berita')` dan diurutkan menggunakan `orderBy('created_at', 'DESC')`.
+
+**Jawaban Pertanyaan Modul:**
+* **Manfaat View Layout:** Meningkatkan *reusability* (penggunaan ulang kode) dan efisiensi. Kita tidak perlu menulis struktur dasar HTML berulang kali. Jika ada perubahan desain dasar (seperti menu navigasi), cukup edit satu file layout utama saja dan perubahannya otomatis teraplikasikan ke seluruh halaman.
+* **Perbedaan View Biasa & View Cell:** View biasa dikendalikan penuh oleh *Controller* utama yang harus mengambil dan menyuplai semua data. Sebaliknya, View Cell adalah komponen UI mandiri yang bisa mengambil datanya sendiri (memanggil *Model* secara langsung) tanpa membebani *Controller* utama. Sangat cocok untuk *widget* dinamis yang berulang di banyak halaman.
 
 > **Hasil Praktikum 3:**
-> *[Tambahkan Screenshot Tampilan Web dengan View Layout dan Widget View Cell terbaru]*
+> *[Tambahkan Screenshot Tampilan Web dengan View Layout dan Widget View Cell di sini]*
 
 ---
 
