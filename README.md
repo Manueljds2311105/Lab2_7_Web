@@ -1,1 +1,70 @@
-# Lab2_7_Web
+# Lab7Web - Praktikum Pemrograman Web 2 (CodeIgniter 4)
+
+Repositori ini berisi kumpulan tugas dan implementasi dari Praktikum Pemrograman Web 2 menggunakan framework PHP **CodeIgniter 4**. Proyek ini mencakup empat modul praktikum yang saling terhubung, dimulai dari konfigurasi dasar framework dan arsitektur MVC, hingga pembuatan sistem CRUD, manajemen View Layout, dan implementasi Modul Login dengan *Authentication Filter*.
+
+---
+
+## 📑 Daftar Isi
+1. [Praktikum 1: Dasar CodeIgniter 4 & Arsitektur MVC](#praktikum-1-dasar-codeigniter-4--arsitektur-mvc)
+2. [Praktikum 2: Framework Lanjutan (CRUD)](#praktikum-2-framework-lanjutan-crud)
+3. [Praktikum 3: View Layout dan View Cell](#praktikum-3-view-layout-dan-view-cell)
+4. [Praktikum 4: Modul Login & Filter Autentikasi](#praktikum-4-modul-login--filter-autentikasi)
+
+---
+
+## 🚀 Praktikum 1: Dasar CodeIgniter 4 & Arsitektur MVC
+Praktikum pertama difokuskan pada pengenalan dasar *framework* CodeIgniter 4 dan pemahaman konsep Model-View-Controller (MVC). Konsep ini memisahkan kode program berdasarkan alur logika, pengolahan data, dan tampilan antarmuka.
+
+**Langkah-langkah Utama:**
+* **Persiapan Lingkungan:** Mengaktifkan ekstensi PHP yang dibutuhkan pada XAMPP (seperti `php-json`, `php-mysqlnd`, dan `php-intl`).
+* **Instalasi & CLI:** Melakukan instalasi manual CodeIgniter 4 dan menggunakan antarmuka baris perintah (CLI) bawaan yaitu `php spark` untuk mempermudah pengembangan.
+* **Mode Debugging:** Mengubah status variabel `CI_ENVIRONMENT` menjadi `development` pada file `.env` untuk memudahkan pelacakan *error*.
+* **Routing & Controller:** Membuat pengaturan *routing* pada `app/Config/Routes.php` untuk mengarahkan URL ke Controller tertentu (seperti halaman Home, About, Contact, dan FAQ).
+* **View & Layout Dasar:** Membuat file View untuk menampilkan halaman web dan menggabungkannya dengan aset CSS statis (`style.css`) yang diletakkan pada folder `public`.
+
+> **Hasil Praktikum 1:**
+> *[Tambahkan Screenshot halaman About/Tampilan Layout Statis di sini]*
+
+---
+
+## 📝 Praktikum 2: Framework Lanjutan (CRUD)
+Praktikum kedua melanjutkan pengembangan dengan membangun fitur CRUD (*Create, Read, Update, Delete*) untuk entitas data Artikel.
+
+**Langkah-langkah Utama:**
+* **Persiapan Database:** Membuat database MySQL bernama `lab_ci4` beserta tabel `artikel`.
+* **Konfigurasi Koneksi:** Menghubungkan aplikasi dengan database melalui file konfigurasi `.env`.
+* **Pembuatan Model:** Menggunakan `ArtikelModel` untuk merepresentasikan tabel database dan menentukan variabel seperti `$primaryKey` dan `$allowedFields`.
+* **Controller & View (Frontend):** Membuat *method* `index()` pada `Artikel` Controller untuk mengambil data dari database dan menampilkannya pada halaman utama *portal berita*, serta *method* `view()` untuk menampilkan detail artikel.
+* **Menu Admin (Backend):** Membuat rute khusus admin untuk melakukan proses CRUD, yang meliputi penambahan data (Add), pengubahan data (Edit), dan penghapusan data (Delete).
+
+> **Hasil Praktikum 2:**
+> *[Tambahkan Screenshot halaman Admin Portal Berita & Form Tambah Artikel di sini]*
+
+---
+
+## 🎨 Praktikum 3: View Layout dan View Cell
+Praktikum ini merapikan struktur tampilan aplikasi menggunakan konsep **View Layout** dan **View Cell**. Pendekatan ini membuat manajemen tampilan menjadi lebih modular, rapi, dan mudah dikelola.
+
+**Langkah-langkah Utama:**
+* **View Layout Utama:** Membuat file `main.php` di dalam folder `layout` sebagai templat dasar halaman. File *view* lainnya (seperti `home.php`) dimodifikasi agar mewarisi tata letak ini menggunakan sintaks `extend` dan mengisi bagian konten dengan `section`.
+* **Implementasi View Cell:** Membuat komponen antarmuka dinamis dan modular (*reusable*) menggunakan View Cell. Kami mengimplementasikan komponen `ArtikelTerkini` untuk menampilkan 5 artikel terbaru pada area *sidebar* (widget) di semua halaman yang memanggilnya.
+
+> **Hasil Praktikum 3:**
+> *[Tambahkan Screenshot Tampilan Web dengan View Layout dan Widget View Cell terbaru]*
+
+---
+
+## 🔒 Praktikum 4: Modul Login & Filter Autentikasi
+Praktikum terakhir berfokus pada keamanan aplikasi dengan menambahkan sistem Login (Autentikasi). Sistem ini membatasi akses ke menu Admin, sehingga hanya pengguna yang terdaftar yang dapat mengelola artikel.
+
+**Langkah-langkah Utama:**
+* **Tabel & Model User:** Membuat tabel `user` (dengan struktur kolom username, useremail, dan userpassword) beserta `UserModel` untuk menangani data kredensial.
+* **Database Seeder:** Men-generate data pengguna *dummy* (termasuk *hashing* password menggunakan `password_hash`) langsung ke database melalui CLI menggunakan fitur `Database Seeder`.
+* **Modul Login & Session:** Mengembangkan antarmuka Login (`login.php`) dan mengelola logika validasi login pada Controller `User`. Jika data cocok, informasi pengguna akan disimpan di dalam `session`. Fungsi logout juga ditambahkan untuk menghancurkan *session* saat ini.
+* **Auth Filter:** Membatasi rute URL menggunakan *Filters*. Sebuah filter bernama `Auth` dibuat untuk mengecek keberadaan sesi login. Filter ini kemudian disisipkan ke dalam *route group* `admin`, yang secara otomatis akan menendang pengguna ke halaman login jika mencoba mengakses halaman admin tanpa sesi yang sah.
+
+> **Hasil Praktikum 4:**
+> *[Tambahkan Screenshot Halaman Login dan Uji Coba Pengalihan (Redirect) Rute Admin]*
+
+---
+*Proyek ini dikembangkan sebagai bagian dari Modul Praktikum Pemrograman Web 2 Universitas Pelita Bangsa.*
