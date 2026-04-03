@@ -57,7 +57,7 @@ Praktikum ini merapikan struktur tampilan aplikasi menggunakan konsep **View Lay
 * **Perbedaan View Biasa & View Cell:** View biasa dikendalikan penuh oleh *Controller* utama yang harus mengambil dan menyuplai semua data. Sebaliknya, View Cell adalah komponen UI mandiri yang bisa mengambil datanya sendiri (memanggil *Model* secara langsung) tanpa membebani *Controller* utama. Sangat cocok untuk *widget* dinamis yang berulang di banyak halaman.
 
 > **Hasil Praktikum 3:**
-> *[Tambahkan Screenshot Tampilan Web dengan View Layout dan Widget View Cell di sini]*
+> ![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/01884f9c657f42e0d15f88bd8b73f3566c7e301d/Web2%20Praktikum%201-4%20SS/Screenshot%202026-04-03%20170431.png)
 
 ---
 
@@ -71,7 +71,7 @@ Praktikum terakhir berfokus pada keamanan aplikasi dengan menambahkan sistem Log
 * **Auth Filter:** Membatasi rute URL menggunakan *Filters*. Sebuah filter bernama `Auth` dibuat untuk mengecek keberadaan sesi login. Filter ini kemudian disisipkan ke dalam *route group* `admin`, yang secara otomatis akan menendang pengguna ke halaman login jika mencoba mengakses halaman admin tanpa sesi yang sah.
 
 > **Hasil Praktikum 4:**
-> *[Tambahkan Screenshot Halaman Login dan Uji Coba Pengalihan (Redirect) Rute Admin]*
+> ![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/01884f9c657f42e0d15f88bd8b73f3566c7e301d/Web2%20Praktikum%201-4%20SS/Screenshot%202026-04-03%20170315.png)
 
 ---
 *Proyek ini dikembangkan sebagai bagian dari Modul Praktikum Pemrograman Web 2 Universitas Pelita Bangsa.*
