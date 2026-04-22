@@ -9,6 +9,8 @@ Repositori ini berisi kumpulan tugas dan implementasi dari Praktikum Pemrograman
 2. [Praktikum 2: Framework Lanjutan (CRUD)](#praktikum-2-framework-lanjutan-crud)
 3. [Praktikum 3: View Layout dan View Cell](#praktikum-3-view-layout-dan-view-cell)
 4. [Praktikum 4: Modul Login & Filter Autentikasi](#praktikum-4-modul-login--filter-autentikasi)
+5. [Praktikum 5: Pagination dan Pencarian](#praktikum-5-pagination-dan-pencarian)
+6. [Praktikum 6: Relasi Tabel dan Query Builder](#praktikum-6-relasi-tabel-dan-query-builder)
 
 ---
 
@@ -97,7 +99,7 @@ Fitur pencarian digunakan untuk memfilter data artikel berdasarkan judul[cite: 7
 
 ---
 
-## 📌 Praktikum 6: Relasi Tabel dan Query Builder
+## ✨ Praktikum 6: Relasi Tabel dan Query Builder
 
 Pada praktikum ke-6 ini, dilakukan perombakan struktur database untuk menerapkan relasi *One-to-Many* dan menggunakan Query Builder untuk melakukan operasi `JOIN`.
 
