@@ -74,4 +74,58 @@ Praktikum terakhir berfokus pada keamanan aplikasi dengan menambahkan sistem Log
 > ![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/01884f9c657f42e0d15f88bd8b73f3566c7e301d/Web2%20Praktikum%201-4%20SS/Screenshot%202026-04-03%20170315.png)
 
 ---
+
+## 📌 Praktikum 5: Pagination dan Pencarian
+
+Pada praktikum ke-5 ini, fokus utama adalah mengoptimalkan tampilan dan pencarian data artikel pada halaman Admin.
+
+### 1. Membuat Pagination
+Pagination berfungsi untuk memecah tampilan data yang panjang menjadi beberapa halaman agar lebih rapi dan mempercepat waktu *loading* halaman. 
+- **Controller:** Memanfaatkan fungsi `paginate()` bawaan CI4 pada `ArtikelModel` dengan batas 10 *record* per halaman.
+- **View:** Menambahkan kode `<?= $pager->links(); ?>` di bawah tabel `admin_index.php` untuk memunculkan tombol navigasi halaman.
+
+**Screenshot Hasil Pagination:**
+![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/123d9b42ae5b89f530c21410db30e4cd9070dadd/Web2%20Praktikum%201-4%20SS/Screenshot%202026-04-09%20104630.png)
+
+### 2. Membuat Pencarian (Search)
+Fitur pencarian digunakan untuk memfilter data artikel berdasarkan judul[cite: 71].
+- **Controller:** Menangkap keyword dari form pencarian menggunakan `$this->request->getVar('q')` dan memfilternya menggunakan Query Builder `like('judul', $q)`.
+- [cite_start]**View:** Menambahkan form HTML pencarian dengan method `GET` dan memastikan link pagination tetap membawa parameter pencarian dengan `$pager->only(['q'])->links()`.
+
+**Screenshot Hasil Pencarian:**
+![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/123d9b42ae5b89f530c21410db30e4cd9070dadd/Web2%20Praktikum%201-4%20SS/Screenshot%202026-04-09%20104713.png)
+
+---
+
+## 📌 Praktikum 6: Relasi Tabel dan Query Builder
+
+Pada praktikum ke-6 ini, dilakukan perombakan struktur database untuk menerapkan relasi *One-to-Many* dan menggunakan Query Builder untuk melakukan operasi `JOIN`.
+
+### 1. Persiapan Database & Relasi Tabel
+- Membuat tabel baru bernama `kategori` untuk menyimpan daftar kategori.
+- Menambahkan kolom `id_kategori` sebagai *Foreign Key* pada tabel `artikel` agar saling terhubung.
+
+### 2. Memodifikasi Model & Menggunakan Query Builder (JOIN)
+- Membuat `KategoriModel` untuk berinteraksi dengan tabel kategori.
+- Memodifikasi `ArtikelModel` dengan menambahkan fungsi baru yang menggunakan `->join('kategori', 'kategori.id_kategori = artikel.id_kategori')` agar nama kategori bisa ditarik bersamaan dengan data artikel.
+
+### 3. Memodifikasi Controller & View (Form & Dropdown)
+- **Controller:** Mengambil data kategori menggunakan `KategoriModel->findAll()` lalu mengirimkannya ke view untuk keperluan form Tambah, Edit, dan Filter.
+- **View:** Mengubah input kategori yang awalnya statis/tidak ada menjadi *Dropdown* dinamis (`<select>`) menggunakan perulangan *foreach* pada form Add dan form Edit.
+
+### 4. Penyelesaian Tugas Praktikum
+- **Detail Artikel:** Memodifikasi `Artikel.php` fungsi `view()` menggunakan metode *JOIN*, sehingga pada halaman `artikel/detail.php` kini dapat menampilkan Nama Kategori artikel yang sedang dibaca.
+- **Improvisasi:** Melakukan perbaikan validasi form tambah/edit dan menangani isu *foreign key* saat update artikel lama yang nilai kategorinya masih kosong/NULL.
+
+**Screenshot Dashboard Admin (Data dengan Kategori):**
+![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/123d9b42ae5b89f530c21410db30e4cd9070dadd/Web2%20Praktikum%201-4%20SS/Screenshot%202026-04-22%20201004.png)
+
+**Screenshot Form Tambah/Edit (Dropdown Kategori):**
+![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/123d9b42ae5b89f530c21410db30e4cd9070dadd/Web2%20Praktikum%201-4%20SS/Screenshot%202026-04-22%20200658.png)
+
+---
+
+**Dikerjakan Oleh:**
+Manuel (Manueljds2311105)
+
 *Proyek ini dikembangkan sebagai bagian dari Modul Praktikum Pemrograman Web 2 Universitas Pelita Bangsa.*
