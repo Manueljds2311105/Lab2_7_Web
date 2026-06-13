@@ -1,16 +1,6 @@
 # Lab7Web - Praktikum Pemrograman Web 2 (CodeIgniter 4)
 
-Repositori ini berisi kumpulan tugas dan implementasi dari Praktikum Pemrograman Web 2 menggunakan framework PHP **CodeIgniter 4**. Proyek ini mencakup empat modul praktikum yang saling terhubung, dimulai dari konfigurasi dasar framework dan arsitektur MVC, hingga pembuatan sistem CRUD, manajemen View Layout, dan implementasi Modul Login dengan *Authentication Filter*.
-
----
-
-## 📑 Daftar Isi
-1. [Praktikum 1: Dasar CodeIgniter 4 & Arsitektur MVC](#praktikum-1-dasar-codeigniter-4--arsitektur-mvc)
-2. [Praktikum 2: Framework Lanjutan (CRUD)](#praktikum-2-framework-lanjutan-crud)
-3. [Praktikum 3: View Layout dan View Cell](#praktikum-3-view-layout-dan-view-cell)
-4. [Praktikum 4: Modul Login & Filter Autentikasi](#praktikum-4-modul-login--filter-autentikasi)
-5. [Praktikum 5: Pagination dan Pencarian](#praktikum-5-pagination-dan-pencarian)
-6. [Praktikum 6: Relasi Tabel dan Query Builder](#praktikum-6-relasi-tabel-dan-query-builder)
+Repositori ini berisi kumpulan tugas dan implementasi dari Praktikum Pemrograman Web 2 menggunakan framework PHP **CodeIgniter 4**. Proyek ini mencakup modul praktikum yang saling terhubung, dimulai dari konfigurasi dasar framework dan arsitektur MVC, hingga pembuatan sistem CRUD, manajemen View Layout, dan implementasi Modul Login dengan *Authentication Filter*.
 
 ---
 
@@ -126,6 +116,110 @@ Pada praktikum ke-6 ini, dilakukan perombakan struktur database untuk menerapkan
 ![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/123d9b42ae5b89f530c21410db30e4cd9070dadd/Web2%20Praktikum%201-4%20SS/Screenshot%202026-04-22%20200658.png)
 
 ---
+
+## 🖼️ Praktikum 7: Upload File Gambar
+Praktikum ini menambahkan fitur unggah (*upload*) berkas ke dalam aplikasi, khususnya untuk melampirkan gambar *thumbnail* atau *cover* pada setiap artikel.
+
+**Langkah-langkah Utama:**
+* **Modifikasi Form:** Menambahkan atribut `enctype="multipart/form-data"` pada tag `<form>` di halaman tambah dan edit artikel, serta menambahkan input bertipe `file`.
+* **Penanganan di Controller:** Memodifikasi method `add()` dan `edit()` pada `Artikel.php` untuk menangkap file menggunakan `$this->request->getFile('gambar')`.
+* **Penyimpanan File:** Memindahkan file gambar yang diunggah ke dalam direktori publik (`public/gambar`) menggunakan fungsi `move()`, dan menyimpan nama file tersebut (`getName()`) ke dalam database.
+
+**Screenshot Hasil Praktikum 7:**
+![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/17b82943e122176a0d3c621172e47121b1f7f1a0/Web2%20Praktikum%20Screenshot/Screenshot%202026-06-13%20222350.png)
+
+---
+
+## ⚡ Praktikum 8: AJAX (Asynchronous JavaScript and XML)
+Praktikum ini bertujuan untuk meningkatkan responsivitas antarmuka aplikasi. Dengan AJAX, halaman web dapat memperbarui dan menampilkan data dari server di latar belakang tanpa harus melakukan *reload* keseluruhan halaman.
+
+**Langkah-langkah Utama:**
+* **Persiapan Library:** Mengunduh dan melampirkan pustaka `jQuery` ke dalam file proyek.
+* **Membuat AjaxController:** Membuat controller khusus yang mengembalikan data dari Model dalam format JSON menggunakan `$this->response->setJSON($data)`.
+* **Implementasi di View:** Mengosongkan tabel HTML bawaan dan menggantinya dengan *script* `$.ajax` yang menembak URL `getData`. Data JSON yang diterima kemudian disusun ulang menjadi baris tabel (`<tr>`) secara dinamis menggunakan JavaScript.
+* **Fitur Hapus Data:** Menambahkan konfirmasi hapus dan metode `DELETE` via AJAX, lalu me- *reload* tabel secara instan menggunakan fungsi `loadData()`.
+
+**Screenshot Hasil Praktikum 8:**
+![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/cdd609817c8fb5716b168eff207595a4fe81c1f4/Web2%20Praktikum%20Screenshot/Screenshot%202026-06-13%20222842.png)
+
+---
+
+## 🔍 Praktikum 9: Implementasi AJAX Pagination dan Search
+Melanjutkan konsep AJAX sebelumnya, praktikum ini memindahkan fitur pencarian (*search*) dan *pagination* yang awalnya berbasis pemuatan halaman (PHP standar) menjadi sepenuhnya *asynchronous* (AJAX).
+
+**Langkah-langkah Utama:**
+* **Modifikasi Controller:** Mengubah `admin_index` agar memiliki percabangan logika. Jika request adalah AJAX (`$this->request->isAJAX()`), maka kembalikan data dan *pager* dalam format JSON. Jika tidak, tampilkan View biasa.
+* **Penanganan Form Filter:** Menambahkan *event listener* `submit` pada form pencarian dan `change` pada *dropdown* kategori di JavaScript untuk memicu pengambilan data ulang (`fetchData`).
+* **Indikator Loading:** Menambahkan parameter `beforeSend` pada Axios/jQuery untuk menampilkan teks "Sedang memuat data artikel..." agar User Experience (UX) lebih baik saat menunggu respon server.
+
+**Screenshot Hasil Praktikum 9:**
+![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/21abae28e2392c6605e626e372188e6e672a83c3/Web2%20Praktikum%20Screenshot/Screenshot%202026-06-13%20220011.png)
+
+---
+
+## 🌐 Praktikum 10: Pembuatan RESTful API CodeIgniter 4
+Praktikum ini merombak peran CodeIgniter 4 yang awalnya berperan penuh (Fullstack) menjadi hanya sebagai penyedia layanan *Backend* berbasis RESTful API (REST Server).
+
+**Langkah-langkah Utama:**
+* **REST Controller:** Membuat `Post.php` di dalam direktori Controllers yang mewarisi `ResourceController` dan menggunakan `ResponseTrait`.
+* **Endpoint CRUD:** Mengimplementasikan 5 metode standar REST: `index()` (GET All), `show()` (GET Spesifik), `create()` (POST), `update()` (PUT/PATCH), dan `delete()` (DELETE).
+* **Konfigurasi Route:** Menambahkan `$routes->resource('post')` pada `Routes.php` untuk memetakan URL secara otomatis.
+* **Testing API:** Melakukan pengujian seluruh *endpoint* pengolahan data menggunakan aplikasi klien Postman dan memastikan format respon berupa JSON.
+
+**Screenshot Hasil Pengujian Postman:**
+![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/a755ed040f1beba6531ae66d1da00a8d8b31f437/Web2%20Praktikum%20Screenshot/Screenshot%202026-06-13%20223817.png)
+
+---
+
+## 🟢 Praktikum 11: Pengenalan VueJS (Frontend)
+Pada modul ini, *Frontend* dibangun secara terpisah menggunakan framework JavaScript modern, **VueJS** (melalui CDN), dan menggunakan **Axios** untuk berkomunikasi dengan REST API CodeIgniter 4.
+
+**Langkah-langkah Utama:**
+* **Inisialisasi Vue:** Menggunakan `Vue.createApp` untuk menginisialisasi state data (`artikel`, `formData`, `showForm`).
+* **Menampilkan Data (Read):** Menggunakan siklus `mounted()` untuk memanggil `axios.get` dan merender tabel HTML dinamis menggunakan direktif `v-for`.
+* **Form Modal (Create & Update):** Membuat modal *pop-up* tersembunyi yang dimunculkan menggunakan `v-if`. Data formulir diikat (*binding*) menggunakan `v-model`. Aksi simpan dibedakan berdasarkan keberadaan `id` (menjadi `axios.post` atau `axios.put`).
+
+**Screenshot Hasil Praktikum 11:**
+![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/7777b8a45376828b2375f1f244dae6f6adb025d9/Web2%20Praktikum%20Screenshot/Screenshot%202026-06-13%20224020.png)
+
+---
+
+## 🚀 Praktikum 12: VueJS Komponen dan Routing (Single Page Application)
+Aplikasi VueJS ditingkatkan menjadi Single Page Application (SPA). Antarmuka web dipecah menjadi beberapa *Component* dan perpindahan halaman ditangani oleh **Vue Router** tanpa *reload* browser.
+
+**Langkah-langkah Utama:**
+* **Pemisahan Komponen:** Memecah kode logika dan *template* HTML menjadi file komponen mandiri: `Home.js`, `Artikel.js`, dan `About.js` (Tugas Tambahan).
+* **Konfigurasi Router:** Mendaftarkan komponen-komponen tersebut ke dalam rute (`/`, `/artikel`, `/about`) menggunakan `createWebHashHistory()` di `app.js`.
+* **Master Layout:** Mengubah `index.html` menggunakan elemen `<router-link>` untuk navigasi menu dan `<router-view>` sebagai area wadah dinamis tempat komponen dirender.
+
+**Screenshot Halaman SPA (About/Profil):**
+![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/9992137178a837b32a51681c748f05c75294ed01/Web2%20Praktikum%20Screenshot/Screenshot%202026-06-13%20224358.png)
+
+---
+
+## 🔐 Praktikum 13: VueJS Autentikasi dan Navigation Guards
+Praktikum ini menerapkan *Client-Side Security*. Rute halaman admin dilindungi sehingga pengguna harus melakukan *login* terlebih dahulu.
+
+**Langkah-langkah Utama:**
+* **API Auth (Backend):** Membuat Controller `Api\Auth.php` di CI4 untuk memvalidasi *username* dan *password* dari database, lalu mengembalikan token rahasia berformat JSON.
+* **Form Login Vue:** Membuat komponen `Login.js` dan mengirimkan data login via *Axios POST*. Jika berhasil, status `isLoggedIn` dan token disimpan ke dalam `localStorage` browser.
+* **Navigation Guards:** Memasang meta tag `requiresAuth` pada rute `/artikel` dan `/about`. Menggunakan fungsi pencegat `router.beforeEach` untuk memblokir akses dan mengalihkan paksa ke rute `/login` jika *localStorage* tidak memiliki sesi yang sah.
+
+**Screenshot Hasil Praktikum 13:**
+![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/73c404cff2c17222c813bc65b445edff389af095/Web2%20Praktikum%20Screenshot/Screenshot%202026-06-13%20224626.png)
+
+---
+
+## 🛡️ Praktikum 14: Keamanan API, Autentikasi Token, dan Axios Interceptors
+Ini adalah tahap akhir penerapan keamanan *Server-Side*. Modul ini memastikan REST API CodeIgniter 4 tidak bisa dimanipulasi secara ilegal menggunakan *tools* eksternal (seperti Postman) tanpa menyertakan Token yang valid.
+
+**Langkah-langkah Utama:**
+* **CI4 Filter (Backend):** Membuat `ApiAuthFilter.php` untuk mengekstrak dan memvalidasi `Authorization: Bearer <token>` dari *HTTP Header*. Filter ini diterapkan khusus untuk rute `POST`, `PUT`, dan `DELETE` artikel.
+* **Axios Interceptors (Frontend):** Menambahkan logika `axios.interceptors.request.use` pada `app.js` VueJS. Fitur ini secara otomatis mengambil token dari `localStorage` dan menyuntikkannya ke dalam *Request Headers* setiap kali aplikasi frontend meminta atau mengirim data ke backend.
+* **Penanganan Error Global:** Menggunakan *interceptors response* untuk menangkap error HTTP 401 (Unauthorized) dari server, membersihkan *localStorage*, dan mengeluarkan (logout) pengguna secara paksa.
+
+**Screenshot Hasil Praktikum 14:**
+![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/73c404cff2c17222c813bc65b445edff389af095/Web2%20Praktikum%20Screenshot/Screenshot%202026-06-13%20212955.png)
 
 **Dikerjakan Oleh:**
 Manuel (Manueljds2311105)
