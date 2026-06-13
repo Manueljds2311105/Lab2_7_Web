@@ -220,6 +220,8 @@ Ini adalah tahap akhir penerapan keamanan *Server-Side*. Modul ini memastikan RE
 
 **Screenshot Hasil Praktikum 14:**
 ![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/73c404cff2c17222c813bc65b445edff389af095/Web2%20Praktikum%20Screenshot/Screenshot%202026-06-13%20212955.png)
+![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/937346e4d4edc024d1c9bec8b5dabc17ee24125e/Web2%20Praktikum%20Screenshot/Screenshot%202026-06-13%20214217.png)
+![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/937346e4d4edc024d1c9bec8b5dabc17ee24125e/Web2%20Praktikum%20Screenshot/Screenshot%202026-06-13%20214244.png)
 
 **Dikerjakan Oleh:**
 Manuel (Manueljds2311105)
