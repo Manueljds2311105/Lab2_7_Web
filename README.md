@@ -224,6 +224,6 @@ Ini adalah tahap akhir penerapan keamanan *Server-Side*. Modul ini memastikan RE
 ![foto](https://github.com/Manueljds2311105/Lab2_7_Web/blob/937346e4d4edc024d1c9bec8b5dabc17ee24125e/Web2%20Praktikum%20Screenshot/Screenshot%202026-06-13%20214244.png)
 
 **Dikerjakan Oleh:**
-Manuel (Manueljds2311105)
+Manuel_312410493 (Manueljds2311105)
 
 *Proyek ini dikembangkan sebagai bagian dari Modul Praktikum Pemrograman Web 2 Universitas Pelita Bangsa.*
